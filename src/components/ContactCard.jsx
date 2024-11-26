@@ -1,6 +1,15 @@
 /** @format */
 
-export function ContactCard({ name, number, handleDelete, id }) {
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../redux/contactsSlice";
+
+export function ContactCard({ name, number, id }) {
+  const dispatch = useDispatch();
+
+  const handleDelete = (contactId) => {
+    dispatch(deleteContact(contactId));
+  };
+
   return (
     <div
       style={{

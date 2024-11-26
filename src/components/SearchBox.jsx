@@ -1,7 +1,18 @@
 /** @format */
 import { Formik, Form, Field } from "formik";
+import { useDispatch } from "react-redux";
+import { filterContacts } from "../redux/filterSlice";
 
-export function SearchBox({ value, handleFilterChange }) {
+export function SearchBox({}) {
+  const dispatch = useDispatch();
+  // const handleFilterChange = (e) => {
+  //   setFilter(e.target.value);
+  // };
+
+  // const visibleContacts = contactList.filter((contact) =>
+  //   contact.name.toLowerCase().includes(filter.toLowerCase())
+  // );
+
   return (
     <div
       style={{
@@ -14,7 +25,10 @@ export function SearchBox({ value, handleFilterChange }) {
       <Formik>
         <Form>
           <p>Search by name:</p>
-          <Field type="text" value={value} onChange={handleFilterChange} />
+          <Field
+            type="text"
+            onChange={(e) => dispatch(filterContacts(e.target.value))}
+          />
         </Form>
       </Formik>
     </div>

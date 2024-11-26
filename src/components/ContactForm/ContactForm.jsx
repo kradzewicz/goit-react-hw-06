@@ -25,7 +25,10 @@ const validationSchema = Yup.object().shape({
 
 export function ContactFrom() {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contactsObject = useSelector(getContacts);
+  const contactsArray = Object.values(contactsObject).filter(
+    (contact) => contact.id
+  );
 
   const nameId = nanoid();
   const numberId = nanoid();
@@ -34,7 +37,7 @@ export function ContactFrom() {
     const name = values.name;
     const number = values.number;
 
-    const duplicatedContact = contacts.some(
+    const duplicatedContact = contactsArray.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
 

@@ -13,7 +13,8 @@ const initialContactList = [
       reducers: {
           addContact: {
               reducer(state, action) {
-                   state.push(action.payload);
+                  const newState = Object.values(state).filter((contact) => contact.id)
+                  return [...newState, action.payload]
               },
               prepare(nameValue, numberValue) {
                   return {
@@ -27,9 +28,9 @@ const initialContactList = [
           
           },
           deleteContact(state, action) {
-              return state.filter((contact) => contact.id !== action.payload)
-            const contactsUpdate = state.filter((contact) => contact.id !== action.payload)
-            return contactsUpdate
+            return Object.values(state).filter(
+                (contact) => contact.id
+              ).filter((contact) => contact.id !== action.payload)
           },
         },
     });

@@ -5,10 +5,13 @@ import { ContactCard } from "./ContactCard";
 import { getContacts, getFilter } from "../redux/selectors";
 
 export function ContactList() {
-  const contactsList = useSelector(getContacts);
+  const contactsObject = useSelector(getContacts);
+  const contactsArray = Object.values(contactsObject).filter(
+    (contact) => contact.id
+  );
   const filter = useSelector(getFilter);
 
-  const filteredContactsList = contactsList.filter((contact) =>
+  const filteredContactsList = contactsArray.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 

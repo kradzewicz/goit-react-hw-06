@@ -5,13 +5,6 @@ import { filterContacts } from "../redux/filterSlice";
 
 export function SearchBox({}) {
   const dispatch = useDispatch();
-  // const handleFilterChange = (e) => {
-  //   setFilter(e.target.value);
-  // };
-
-  // const visibleContacts = contactList.filter((contact) =>
-  //   contact.name.toLowerCase().includes(filter.toLowerCase())
-  // );
 
   return (
     <div
